@@ -13,6 +13,7 @@ button {
     padding-top: 0;
     padding-bottom: 0;
     background-color: transparent;
+    border-bottom: 3px solid @theme_bg_color;
 }
 
 button:active {
@@ -33,10 +34,6 @@ label {
 
 .client-title {
     color: @theme_selected_bg_color;
-}
-
-.notification {
-    color: yellow;
 }
 
 levelbar block,
