@@ -5,7 +5,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M:%S %b %e."'],
+    poll: [1000, 'date "+%H:%M:%S   %b%e, %Y"'],
 })
 
 // widgets can be only assigned as a child in one container
@@ -163,8 +163,8 @@ function Right() {
         children: [
             // Volume(),
             BatteryLabel(),
-            Clock(),
             SysTray(),
+            Clock(),
         ],
     })
 }
