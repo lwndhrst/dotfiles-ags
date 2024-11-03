@@ -41,7 +41,17 @@ window.bar {
 
 .bar-workspaces button.workspace-active {
     background-color: @base01;
-    border-top: 2px solid @accent_color;
+    border-top: 2px solid @base04;
+}
+
+.bar-workspaces button.workspace-active:hover {
+    background-color: @base02;
+    border-top: 2px solid @theme_fg_color;
+}
+
+.bar-workspaces button.workspace-inactive:hover {
+    background-color: @base01;
+    border-top: 2px solid @base04;
 }
 
 .bar-systray {
@@ -56,7 +66,7 @@ window.bar {
 
 .bar-systray button:hover {
     background-color: @base01;
-    border-top: 2px solid @accent_color;
+    border-top: 2px solid @base04;
 }
 
 .bar-clock {
