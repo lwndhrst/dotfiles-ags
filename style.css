@@ -1,6 +1,27 @@
+/* Available theme colors (not exhaustive):
+ * @accent_color
+ * @success_color
+ * @warning_color
+ * @error_color
+ *
+ * @theme_bg_color
+ * @theme_fg_color
+ * @theme_selected_bg_color
+ * @theme_selected_fg_color
+ */
+
+@define-color base00 #000f16;
+@define-color base01 #0f2129;
+@define-color base02 #203039;
+@define-color base03 #495863;
+@define-color base04 #999fa5;
+@define-color base05 #c2c3c7;
+@define-color base06 #dbdbdc;
+@define-color base07 #f1f1f1;
+
 
 /*********/
-/** BAR **/
+/** Bar **/
 /*********/
 
 window.bar {
@@ -8,37 +29,38 @@ window.bar {
     color: @theme_fg_color;
 }
 
-button {
-    min-width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.bar-workspaces {
+    padding-left: 10px;
+}
+
+.bar-workspaces button {
     background-color: transparent;
-    border-bottom: 3px solid @theme_bg_color;
+    border-top: 2px solid @theme_bg_color;
+    border-radius: 0px;
 }
 
-button:active {
-    background-color: @theme_selected_bg_color;
+.bar-workspaces button.workspace-active {
+    background-color: @base01;
+    border-top: 2px solid @accent_color;
 }
 
-button:hover {
-    border-bottom: 3px solid @theme_fg_color;
+.bar-systray {
+    padding-right: 10px;
 }
 
-label {
-    font-weight: bold;
+.bar-systray button {
+    background-color: transparent;
+    border-top: 2px solid @theme_bg_color;
+    border-radius: 0px;
 }
 
-.workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+.bar-systray button:hover {
+    background-color: @base01;
+    border-top: 2px solid @accent_color;
 }
 
-.client-title {
-    color: @theme_selected_bg_color;
-}
-
-levelbar block,
-highlight {
-    min-height: 10px;
+.bar-clock {
+    padding-right: 10px;
 }
 
 
@@ -58,7 +80,6 @@ window.notification-popups box.notifications {
 
 .icon image {
     font-size: 58px;
-    /* to center the icon */
     margin: 5px;
     color: @theme_fg_color;
 }
