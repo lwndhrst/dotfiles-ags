@@ -35,23 +35,21 @@ window.bar {
 
 .bar-workspaces button {
     background-color: transparent;
-    border-top: 2px solid @theme_bg_color;
+    border-top: 3px solid @theme_bg_color;
     border-radius: 0px;
 }
 
 .bar-workspaces button.workspace-active {
-    background-color: @base01;
-    border-top: 2px solid @base04;
+    border-top: 3px solid @accent_color;
 }
 
 .bar-workspaces button.workspace-active:hover {
-    background-color: @base02;
-    border-top: 2px solid @theme_fg_color;
+    background-color: @base01;
 }
 
 .bar-workspaces button.workspace-inactive:hover {
     background-color: @base01;
-    border-top: 2px solid @base04;
+    border-top: 3px solid @base03;
 }
 
 .bar-systray {
@@ -60,13 +58,13 @@ window.bar {
 
 .bar-systray button {
     background-color: transparent;
-    border-top: 2px solid @theme_bg_color;
+    border-top: 3px solid @theme_bg_color;
     border-radius: 0px;
 }
 
 .bar-systray button:hover {
     background-color: @base01;
-    border-top: 2px solid @base04;
+    border-top: 3px solid @base03;
 }
 
 .bar-clock {
