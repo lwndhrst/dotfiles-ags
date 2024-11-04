@@ -49,7 +49,7 @@ window.bar {
 
 .bar-workspaces button.workspace-inactive:hover {
     background-color: @base01;
-    border-top: 3px solid @base02;
+    border-top: 3px solid @base01;
 }
 
 .bar-systray {
@@ -58,13 +58,11 @@ window.bar {
 
 .bar-systray button {
     background-color: transparent;
-    border-top: 3px solid @theme_bg_color;
     border-radius: 0px;
 }
 
 .bar-systray button:hover {
     background-color: @base01;
-    border-top: 3px solid @base02;
 }
 
 .bar-clock {
@@ -108,7 +106,7 @@ window.notification-popups box.notifications {
 }
 
 .notification.critical {
-    border: 1px solid lightcoral;
+    border: 1px solid @error_color;
 }
 
 .title {
