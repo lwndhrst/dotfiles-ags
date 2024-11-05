@@ -74,59 +74,62 @@ window.bar {
 /** Notifications **/
 /*******************/
 
-window.notification-popups box.notifications {
-    padding: .5em;
+window.notification-popups box.notification-list {
+    min-width: 1px;
+    min-height: 700px;
 }
 
-.icon {
+.notification-icon {
     min-width: 68px;
     min-height: 68px;
     margin-right: 1em;
 }
 
-.icon image {
+.notification-icon image {
     font-size: 58px;
     margin: 5px;
     color: @theme_fg_color;
 }
 
-.icon box {
-    min-width: 68px;
-    min-height: 68px;
-    border-radius: 7px;
+.notification-icon box {
+    min-width: 64px;
+    min-height: 64px;
 }
 
 .notification {
     min-width: 350px;
-    border-radius: 11px;
+    border-radius: 0px;
     padding: 1em;
-    margin: .5em;
-    border: 1px solid @wm_borders_edge;
     background-color: @theme_bg_color;
 }
 
-.notification.critical {
-    border: 1px solid @error_color;
+.notification-title {
+    color: @accent_color;
+    font-size: 1.2em;
 }
 
-.title {
-    color: @theme_fg_color;
-    font-size: 1.4em;
+.notification.critical .notification-title {
+    color: @error_color;
 }
 
-.body {
+.notification-body {
     color: @theme_unfocused_fg_color;
 }
 
-.actions .action-button {
+.notification-actions .notification-action-button {
     margin: 0 .4em;
     margin-top: .8em;
 }
 
-.actions .action-button:first-child {
+.notification-actions .notification-action-button:first-child {
     margin-left: 0;
 }
 
-.actions .action-button:last-child {
+.notification-actions .notification-action-button:last-child {
     margin-right: 0;
 }
+
+
+/******************/
+/** App Launcher **/
+/******************/

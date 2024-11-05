@@ -27,36 +27,36 @@ function NotificationIcon({ app_entry, app_icon, image }) {
 function Notification(n) {
     const icon = Widget.Box({
         vpack: "start",
-        class_name: "icon",
+        class_name: "notification-icon",
         child: NotificationIcon(n),
     })
 
     const title = Widget.Label({
-        class_name: "title",
+        class_name: "notification-title",
+        hexpand: true,
         xalign: 0,
         justification: "left",
-        hexpand: true,
         max_width_chars: 24,
         truncate: "end",
-        wrap: true,
         label: n.summary,
+        wrap: true,
         use_markup: true,
     })
 
     const body = Widget.Label({
-        class_name: "body",
+        class_name: "notification-body",
         hexpand: true,
-        use_markup: true,
         xalign: 0,
         justification: "left",
         label: n.body,
         wrap: true,
+        use_markup: true,
     })
 
     const actions = Widget.Box({
-        class_name: "actions",
+        class_name: "notification-actions",
         children: n.actions.map(({ id, label }) => Widget.Button({
-            class_name: "action-button",
+            class_name: "notification-action-button",
             on_clicked: () => {
                 n.invoke(id)
                 n.dismiss()
@@ -66,16 +66,11 @@ function Notification(n) {
         })),
     })
 
-    return Widget.EventBox(
-        {
-            attribute: { id: n.id },
-            on_primary_click: n.dismiss,
-        },
-        Widget.Box(
-            {
-                class_name: `notification ${n.urgency}`,
-                vertical: true,
-            },
+    return Widget.Box({
+        attribute: { id: n.id },
+        class_name: `notification ${n.urgency}`,
+        vertical: true,
+        children: [
             Widget.Box([
                 icon,
                 Widget.Box(
@@ -85,8 +80,30 @@ function Notification(n) {
                 ),
             ]),
             actions,
-        ),
-    )
+        ],
+    })
+
+    /*
+    return Widget.EventBox({
+        attribute: { id: n.id },
+        // on_primary_click: n.dismiss,
+        child: Widget.Box({
+            class_name: `notification ${n.urgency}`,
+            vertical: true,
+            children: [
+                Widget.Box([
+                    icon,
+                    Widget.Box(
+                        { vertical: true },
+                        title,
+                        body,
+                    ),
+                ]),
+                actions,
+            ],
+        }),
+    })
+    */
 }
 
 export function NotificationPopups(monitor = 0) {
@@ -97,8 +114,9 @@ export function NotificationPopups(monitor = 0) {
 
     function onNotified(_, /** @type {number} */ id) {
         const n = notifications.getNotification(id)
-        if (n)
+        if (n) {
             list.children = [Notification(n), ...list.children]
+        }
     }
 
     function onDismissed(_, /** @type {number} */ id) {
@@ -114,17 +132,9 @@ export function NotificationPopups(monitor = 0) {
         class_name: "notification-popups",
         anchor: ["top", "right"],
         child: Widget.Box({
-            css: "min-width: 2px; min-height: 2px;",
-            class_name: "notifications",
+            class_name: "notification-list",
             vertical: true,
             child: list,
-
-            /** this is a simple one liner that could be used instead of
-                hooking into the 'notified' and 'dismissed' signals.
-                but its not very optimized becuase it will recreate
-                the whole list everytime a notification is added or dismissed */
-            // children: notifications.bind('popups')
-            //     .as(popups => popups.map(Notification))
         }),
     })
 }
