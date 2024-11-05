@@ -82,28 +82,6 @@ function Notification(n) {
             actions,
         ],
     })
-
-    /*
-    return Widget.EventBox({
-        attribute: { id: n.id },
-        // on_primary_click: n.dismiss,
-        child: Widget.Box({
-            class_name: `notification ${n.urgency}`,
-            vertical: true,
-            children: [
-                Widget.Box([
-                    icon,
-                    Widget.Box(
-                        { vertical: true },
-                        title,
-                        body,
-                    ),
-                ]),
-                actions,
-            ],
-        }),
-    })
-    */
 }
 
 export function NotificationPopups(monitor = 0) {
