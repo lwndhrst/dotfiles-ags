@@ -2,7 +2,7 @@ const hyprland = await Service.import("hyprland")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M %b%e, %Y"'],
+    poll: [1000, 'date "+%H:%M %b %e, %Y"'],
 })
 
 function Workspaces() {
