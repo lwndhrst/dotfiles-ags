@@ -1,0 +1,72 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$theme_fg_color: "@theme_fg_color";
+$theme_bg_color: "@theme_bg_color";
+$theme_selected_fg_color: "@theme_fg_color";
+$theme_selected_bg_color: "@theme_bg_color";
+$theme_unfocused_fg_color: "@theme_fg_color";
+$theme_unfocused_bg_color: "@theme_bg_color";
+$accent_color: "@accent_color";
+$success_color: "@success_color";
+$warning_color: "@warning_color";
+$error_color: "@error_color";
+
+// custom colors
+$base00: #000f16;
+$base01: #0f2129;
+$base02: #203039;
+$base03: #495863;
+$base04: #999fa5;
+$base05: #c2c3c7;
+$base06: #dbdbdc;
+$base07: #f1f1f1;
+
+window.bar {
+    background: transparent;
+    color: #{$theme_bg_color};
+
+    >centerbox {
+        background: #{$theme_bg_color};
+        color: #{$theme_fg_color};
+        border-radius: 0px;
+    }
+
+    .bar-workspaces {
+        padding-left: 10px;
+    }
+
+    .bar-workspaces button {
+        background-color: transparent;
+        border-top: 3px solid #{$theme_bg_color};
+        border-radius: 0px;
+    }
+
+    .bar-workspaces button.workspace-active {
+        border-top: 3px solid #{$accent_color};
+    }
+
+    .bar-workspaces button.workspace-active:hover {
+        background-color: $base01;
+    }
+
+    .bar-workspaces button.workspace-inactive:hover {
+        background-color: $base01;
+        border-top: 3px solid $base01;
+    }
+
+    .bar-systray {
+        padding-right: 10px;
+    }
+
+    .bar-systray button {
+        background-color: transparent;
+        border-radius: 0px;
+    }
+
+    .bar-systray button:hover {
+        background-color: $base01;
+    }
+
+    .bar-time {
+        padding-right: 10px;
+    }
+}
