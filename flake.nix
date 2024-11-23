@@ -19,14 +19,31 @@
       };
 
     in {
-      packages.${system}.default = ags.lib.bundle {
-        inherit pkgs;
-        name = "ags-run";
-        src = ./ags;
+      packages.${system} = {
+        default = ags.lib.bundle {
+          inherit pkgs;
+          name = "ags-run";
+          src = ./ags;
 
-        extraPackages = with ags.packages.${system}; [
-          hyprland
-          tray
+          extraPackages = with ags.packages.${system}; [
+            apps
+            hyprland
+            tray
+          ];
+        };
+
+        launcher = pkgs.writeShellApplication {
+          name = "ags-launcher";
+          runtimeInputs = [ self.packages.${system}.default ];
+          text = ''
+            ags toggle launcher
+          '';
+        };
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = [
+          ags.packages.${system}.default
         ];
       };
     };
