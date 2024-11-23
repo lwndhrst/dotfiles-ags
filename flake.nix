@@ -34,7 +34,7 @@
 
         launcher = pkgs.writeShellApplication {
           name = "ags-launcher";
-          runtimeInputs = [ self.packages.${system}.default ];
+          runtimeInputs = [ ags.packages.${system}.default ];
           text = ''
             ags toggle launcher
           '';
