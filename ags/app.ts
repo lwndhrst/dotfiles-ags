@@ -5,7 +5,6 @@ import Launcher from "./widgets/launcher/launcher"
 import NotificationPopups from "./widgets/notification/notification_popups"
 
 App.start({
-    instanceName: "test",
     css: style,
     main() {
         App.get_monitors().map(Bar)
