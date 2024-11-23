@@ -4,18 +4,13 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, astal, ags }:
+  outputs = { self, nixpkgs, ags }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -24,34 +19,15 @@
       };
 
     in {
-      packages.${system}.default = pkgs.stdenvNoCC.mkDerivation rec {
-        name = "ags";
-        src = ./.;
+      packages.${system}.default = ags.lib.bundle {
+        inherit pkgs;
+        name = "ags-run";
+        src = ./ags;
 
-        nativeBuildInputs = [
-          ags.packages.${system}.default
-          pkgs.wrapGAppsHook
-          pkgs.gobject-introspection
-        ];
-
-        buildInputs = (with astal.packages.${system}; [
-          astal3
-          io
+        extraPackages = with ags.packages.${system}; [
           hyprland
-          mpris
-          battery
-          wireplumber
-          network
           tray
-        ]) ++ (with pkgs; [
-          libdbusmenu-gtk3
-        ]);
-
-        installPhase = ''
-          mkdir -p $out/bin
-          cd ags
-          ags bundle app.ts $out/bin/${name}
-        '';
+        ];
       };
     };
 }
