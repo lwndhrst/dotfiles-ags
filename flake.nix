@@ -28,6 +28,7 @@
           extraPackages = with ags.packages.${system}; [
             apps
             hyprland
+            notifd
             tray
           ];
         };
