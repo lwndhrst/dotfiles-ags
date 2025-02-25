@@ -33,12 +33,22 @@
           ];
         };
 
-        launcher = pkgs.writeShellApplication {
-          name = "ags-launcher";
-          runtimeInputs = [ ags.packages.${system}.default ];
-          text = ''
-            ags toggle launcher
-          '';
+        scripts = {
+          launcher = pkgs.writeShellApplication {
+            name = "ags-launcher";
+            runtimeInputs = [ ags.packages.${system}.default ];
+            text = ''
+              ags toggle launcher
+            '';
+          };
+
+          quit = pkgs.writeShellApplication {
+            name = "ags-restart";
+            runtimeInputs = [ ags.packages.${system}.default ];
+            text = ''
+              ags quit
+            '';
+          };
         };
       };
 
