@@ -43,7 +43,7 @@
           };
 
           quit = pkgs.writeShellApplication {
-            name = "ags-restart";
+            name = "ags-quit";
             runtimeInputs = [ ags.packages.${system}.default ];
             text = ''
               ags quit
