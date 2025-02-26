@@ -32,7 +32,7 @@ function AppButton({ app }: { app: Apps.Application }) {
     </button>
 }
 
-export default function Launcher() {
+export default function AppLauncher() {
     const { CENTER } = Gtk.Align
     const apps = new Apps.Apps()
 
@@ -44,7 +44,7 @@ export default function Launcher() {
     }
 
     return <window
-        name="launcher"
+        name="app-launcher"
         anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM}
         exclusivity={Astal.Exclusivity.IGNORE}
         keymode={Astal.Keymode.ON_DEMAND}

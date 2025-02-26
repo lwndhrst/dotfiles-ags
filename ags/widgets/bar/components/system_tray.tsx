@@ -1,0 +1,19 @@
+import { bind } from "astal"
+import { Astal, Gtk, Gdk } from "astal/gtk3"
+import Tray from "gi://AstalTray"
+
+export default function SystemTray() {
+    const tray = Tray.get_default()
+
+    return <box className="bar-tray">
+        {bind(tray, "items").as(items => items.map(item => (
+            <menubutton
+                tooltipMarkup={bind(item, "tooltipMarkup")}
+                usePopover={false}
+                actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}
+                menuModel={bind(item, "menuModel")}>
+                <icon gicon={bind(item, "gicon")} />
+            </menubutton>
+        )))}
+    </box>
+}

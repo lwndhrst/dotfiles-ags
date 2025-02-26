@@ -26,7 +26,7 @@ $base07: #f1f1f1;
     @return string.unquote("alpha(#{$c},#{$a})");
 }
 
-window#launcher {
+window#app-launcher {
     all: unset;
 
     box.Applauncher {

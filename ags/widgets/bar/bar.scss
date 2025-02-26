@@ -23,6 +23,11 @@ $base07: #f1f1f1;
 window.bar {
     background: transparent;
     color: $theme_bg_color;
+    font-size: 10pt;
+
+    button {
+        padding: 0px 5px;
+    }
 
     >centerbox {
         background: $theme_bg_color;
@@ -30,8 +35,9 @@ window.bar {
         border-radius: 0px;
     }
 
+    // workspaces
     .bar-workspaces {
-        padding-left: 10px;
+        margin-left: 10px;
     }
 
     .bar-workspaces button {
@@ -40,33 +46,50 @@ window.bar {
         border-radius: 0px;
     }
 
-    .bar-workspaces button.workspace-active {
+    .bar-workspaces button.workspace-focused {
         border-top: 3px solid $accent_color;
     }
 
-    .bar-workspaces button.workspace-active:hover {
+    .bar-workspaces button.workspace-focused:hover {
         background-color: $base01;
     }
 
-    .bar-workspaces button.workspace-inactive:hover {
+    .bar-workspaces button.workspace-unfocused:hover {
         background-color: $base01;
         border-top: 3px solid $base01;
     }
 
-    .bar-systray {
-        padding-right: 10px;
+    // app launcher
+    .bar-applauncher {
+        margin-left: 10px;
     }
 
-    .bar-systray button {
+    // notifications
+    .bar-notifications {
+        margin-right: 10px;
+    }
+
+    // system tray
+    .bar-tray {
+        margin-right: 10px;
+    }
+
+    .bar-tray button {
         background-color: transparent;
         border-radius: 0px;
     }
 
-    .bar-systray button:hover {
+    .bar-tray button:hover {
         background-color: $base01;
     }
 
+    // wifi
+    .bar-wifi {
+        margin-right: 15px;
+    }
+
+    // date and time
     .bar-time {
-        padding-right: 10px;
+        margin-right: 10px;
     }
 }

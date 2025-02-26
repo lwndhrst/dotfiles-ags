@@ -20,7 +20,9 @@
 
     in {
       packages.${system} = {
-        default = ags.lib.bundle {
+        default = self.packages.${system}.run;
+
+        run = ags.lib.bundle {
           inherit pkgs;
           name = "ags-run";
           src = ./ags;
@@ -28,27 +30,26 @@
           extraPackages = with ags.packages.${system}; [
             apps
             hyprland
+            network
             notifd
             tray
           ];
         };
 
-        scripts = {
-          launcher = pkgs.writeShellApplication {
-            name = "ags-launcher";
-            runtimeInputs = [ ags.packages.${system}.default ];
-            text = ''
-              ags toggle launcher
-            '';
-          };
+        quit = pkgs.writeShellApplication {
+          name = "ags-quit";
+          runtimeInputs = [ ags.packages.${system}.default ];
+          text = ''
+            ags quit
+          '';
+        };
 
-          quit = pkgs.writeShellApplication {
-            name = "ags-quit";
-            runtimeInputs = [ ags.packages.${system}.default ];
-            text = ''
-              ags quit
-            '';
-          };
+        app-launcher = pkgs.writeShellApplication {
+          name = "ags-launcher";
+          runtimeInputs = [ ags.packages.${system}.default ];
+          text = ''
+            ags toggle app-launcher
+          '';
         };
       };
 
